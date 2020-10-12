@@ -2,7 +2,7 @@
 
 ## Run
 ```
-docker run --privileged --network=host -e URL="pritunl://<auth>@<host>" redavtovo/pritunl-link
+docker run -d --privileged --network=host -e URL="pritunl://<auth>@<host>" --name link redavtovo/pritunl-link
 ```
 
 ### Requirements

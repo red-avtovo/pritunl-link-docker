@@ -11,7 +11,9 @@ docker run -d --privileged --network=host -e URL="pritunl://<auth>@<host>" --nam
 * Host network
 
 For experiments:
-  docker run -it --rm --privileged --network=host alpine sh
+```
+docker run -it --rm --privileged --network=host alpine sh
+```
 
 Note:
 - You need to add routing to the machine with docker this container on your router

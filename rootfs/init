@@ -1,7 +1,14 @@
 #!/bin/sh
 
+[[ ! -z "$PROVIDER" ]] && pritunl-link provider "$PROVIDER"
+[[ ! -z "$UNIFI_CONTROLLER" ]] && pritunl-link unifi-controller "$UNIFI_CONTROLLER"
+[[ ! -z "$UNIFI_SITE" ]] && pritunl-link unifi-site "$UNIFI_SITE"
+[[ ! -z "$UNIFI_USERNAME" ]] && pritunl-link unifi-username "$UNIFI_USERNAME"
+[[ ! -z "$UNIFI_PASSWORD" ]] && pritunl-link unifi-password "$UNIFI_PASSWORD"
+[[ ! -z "$VERIFY_OFF" ]] && sudo pritunl-link verify-off
+
 if [[ ! -z "$URL" ]]; then
-    pritunl-link add $URL
+    pritunl-link add "$URL"
     pritunl-link start
 else
   echo "No URL provided. There is no server to connect to"

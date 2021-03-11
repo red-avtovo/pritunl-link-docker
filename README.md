@@ -4,7 +4,7 @@
 ```bash
 docker run -d --privileged \
     --network=host \
-    -e URL="pritunl://<auth>@<host>" \
+    -e URLS="pritunl://<auth>@<host>;pritunl://<auth>@<host>" \
     --name link \
     redavtovo/pritunl-link
 ```

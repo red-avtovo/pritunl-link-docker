@@ -7,8 +7,12 @@
 [[ ! -z "$UNIFI_PASSWORD" ]] && pritunl-link unifi-password "$UNIFI_PASSWORD"
 [[ ! -z "$VERIFY_OFF" ]] && sudo pritunl-link verify-off
 
-if [[ ! -z "$URL" ]]; then
-    pritunl-link add "$URL"
+if [[ ! -z "$URLS" ]]; then
+    IFS=';' read -ra URL <<< "$URLS"
+    for i in "${URL[@]}"; do
+      pritunl-link add "$URL"
+    done
+
     pritunl-link start
 else
   echo "No URL provided. There is no server to connect to"

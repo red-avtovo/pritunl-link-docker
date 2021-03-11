@@ -10,7 +10,7 @@
 if [[ ! -z "$URLS" ]]; then
     IFS=';' read -ra URL <<< "$URLS"
     for i in "${URL[@]}"; do
-      pritunl-link add "$URL"
+      pritunl-link add "$i"
     done
 
     pritunl-link start

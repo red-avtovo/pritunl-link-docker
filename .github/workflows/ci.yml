@@ -1,6 +1,10 @@
 name: CI
 
-on: [push]
+on: 
+  push:
+    branches: 
+    - main
+
 
 env:
   DOCKER_IMAGE: redavtovo/pritunl-link

@@ -8,7 +8,7 @@
 [[ ! -z "$VERIFY_OFF" ]] && sudo pritunl-link verify-off
 
 if [[ ! -z "$URLS" ]]; then
-    IFS=';' read -ra URL <<< "$URLS"
+	URL=$(echo $URLS | tr "," "\n")
     for i in "${URL[@]}"; do
       pritunl-link add "$i"
     done

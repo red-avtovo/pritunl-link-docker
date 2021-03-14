@@ -1,15 +1,19 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-[[ ! -z "$PROVIDER" ]] && pritunl-link provider "$PROVIDER"
-[[ ! -z "$UNIFI_CONTROLLER" ]] && pritunl-link unifi-controller "$UNIFI_CONTROLLER"
-[[ ! -z "$UNIFI_SITE" ]] && pritunl-link unifi-site "$UNIFI_SITE"
-[[ ! -z "$UNIFI_USERNAME" ]] && pritunl-link unifi-username "$UNIFI_USERNAME"
-[[ ! -z "$UNIFI_PASSWORD" ]] && pritunl-link unifi-password "$UNIFI_PASSWORD"
-[[ ! -z "$VERIFY_OFF" ]] && sudo pritunl-link verify-off
+set -o errexit
+set -o pipefail
+set -o nounset
 
-if [[ ! -z "$URLS" ]]; then
-	URL=$(echo $URLS | tr "," "\n")
-    for i in "${URL[@]}"; do
+[[ -n "${PROVIDER:-}" ]] && pritunl-link provider "$PROVIDER"
+[[ -n "${UNIFI_CONTROLLER:-}" ]] && pritunl-link unifi-controller "$UNIFI_CONTROLLER"
+[[ -n "${UNIFI_SITE:-}" ]] && pritunl-link unifi-site "$UNIFI_SITE"
+[[ -n "${UNIFI_USERNAME:-}" ]] && pritunl-link unifi-username "$UNIFI_USERNAME"
+[[ -n "${UNIFI_PASSWORD:-}" ]] && pritunl-link unifi-password "$UNIFI_PASSWORD"
+[[ -n "${VERIFY_OFF:-}" ]] && sudo pritunl-link verify-off
+
+if [[ -n "$URLS" ]]; then
+    URL=$(echo "$URLS" | tr "," "\n")
+    for i in $URL; do
       pritunl-link add "$i"
     done
 

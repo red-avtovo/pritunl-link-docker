@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:latest
 
 MAINTAINER red <red.avtovo@gmail.com>
 

@@ -12,6 +12,7 @@ set -o nounset
 [[ -n "${VERIFY_OFF:-}" ]] && sudo pritunl-link verify-off
 
 if [[ -n "$URLS" ]]; then
+    pritunl-link clear
     URL=$(echo "$URLS" | tr "," "\n")
     for i in $URL; do
       pritunl-link add "$i"

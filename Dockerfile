@@ -10,7 +10,8 @@ RUN apk add --no-cache go git --virtual .build-deps && \
 	git clone https://github.com/pritunl/pritunl-link/ && \
 	cd pritunl-link && \
 	go env -w GO111MODULE=auto && \
-	go get ./.. && \
+	go get && \
+	go build && \
 	cp /go/bin/* /usr/bin/ && \
 	cd / && \
 	rm -rf /go && \

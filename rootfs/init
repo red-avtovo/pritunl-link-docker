@@ -9,8 +9,8 @@ set -o nounset
 [[ -n "${UNIFI_SITE:-}" ]] && pritunl-link unifi-site "$UNIFI_SITE"
 [[ -n "${UNIFI_USERNAME:-}" ]] && pritunl-link unifi-username "$UNIFI_USERNAME"
 [[ -n "${UNIFI_PASSWORD:-}" ]] && pritunl-link unifi-password "$UNIFI_PASSWORD"
-[[ -n "${VERIFY_OFF:-}" ]] && sudo pritunl-link verify-off
-[[ -n "${LOCAL_ADDRESS:-}" ]] && sudo pritunl-link local-address "$LOCAL_ADDRESS"
+[[ -n "${VERIFY_OFF:-}" ]] && pritunl-link verify-off
+[[ -n "${LOCAL_ADDRESS:-}" ]] && pritunl-link local-address "$LOCAL_ADDRESS"
 
 if [[ -n "$URLS" ]]; then
     pritunl-link clear
